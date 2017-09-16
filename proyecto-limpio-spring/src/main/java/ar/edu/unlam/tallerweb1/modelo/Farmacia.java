@@ -7,13 +7,32 @@ public class Farmacia {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "id_Farmacia")
+	@Column (name = "idFarmacia")
 	public Long id;
 	public String nombre;
 	public String telefono;
 	public String diaDeTurno;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Iddireccion")
+	private Direccion direccion;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Idpunto")
+	private Punto geoLocalizacion;
+	
+	
+	public Farmacia(String nombre, String diaDeTurno, String telefono){
+		
+		this.nombre = nombre;
+		this.diaDeTurno = diaDeTurno;
+		this.telefono = telefono;
+	}
+	
+	public Farmacia(){
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +56,22 @@ public class Farmacia {
 	}
 	public void setDiaDeTurno(String diaDeTurno) {
 		this.diaDeTurno = diaDeTurno;
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public Punto getGeoLocalizacion() {
+		return geoLocalizacion;
+	}
+
+	public void setGeoLocalizacion(Punto geoLocalizacion) {
+		this.geoLocalizacion = geoLocalizacion;
 	}
 	
 	

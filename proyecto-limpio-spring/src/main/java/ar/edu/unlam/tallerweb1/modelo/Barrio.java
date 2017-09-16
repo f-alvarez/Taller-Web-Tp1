@@ -11,28 +11,45 @@ public class Barrio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id_barrio")
-	public Long Id;
-	public String Nombre;
+	@Column(name = "IdBarrio")
+	public Long id;
+	public String nombre;
+	
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JoinColumn(name = "idComuna")
+	private Comuna comuna;
 	
 	
-	public Barrio(Long id, String nombre) {
-		super();
-		Id = id;
-		Nombre = nombre;
+	public Barrio( String nombre) {
+		
+		this.nombre = nombre;
+		
 	}
+	
+	public Barrio(){
+		
+	}
+	
 	
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
+	}
+
+	public Comuna getComuna() {
+		return comuna;
+	}
+
+	public void setComuna(Comuna comuna) {
+		this.comuna = comuna;
 	}
 	
 	

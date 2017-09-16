@@ -7,7 +7,7 @@ public class Punto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Punto")
+	@Column(name = "idPunto")
 	private String id;
 	private String latitud;
 	private String longitud;

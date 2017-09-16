@@ -7,15 +7,29 @@ public class Direccion {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id_direccion")
+	@Column(name = "Iddireccion")
 	private Long Id;
 	private String calle;
 	private String numero;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idBarrio")
+	private Barrio barrio;
 	
 	
 	
 	
+	public Direccion( String calle, String numero, Barrio barrio) {
+		
+		
+		this.calle = calle;
+		this.numero = numero;
+		this.barrio = barrio;
+	}
 	
+	public Direccion()
+	{
+		
+	}
 	public Long getId() {
 		return Id;
 	}
@@ -34,6 +48,12 @@ public class Direccion {
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	public Barrio getBarrio() {
+		return barrio;
+	}
+	public void setBarrio(Barrio barrio) {
+		this.barrio = barrio;
 	}
 	
 	

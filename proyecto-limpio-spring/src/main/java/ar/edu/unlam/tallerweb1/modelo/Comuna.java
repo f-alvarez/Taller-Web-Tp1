@@ -9,17 +9,24 @@ public class Comuna {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_Comuna")
+	@Column(name = "idComuna")
 	public Long id;
 	public String nombre;
 	
-	/*public List<Barrio> getBarrios() {
+	@OneToMany (mappedBy = "comuna")
+	private List<Barrio> barrios;
+
+	
+	public Comuna( String nombre, List<Barrio> barrios) {
+		
+		this.nombre = nombre;
+		this.barrios = barrios;
+	}
+	
+	public Comuna(){
 		
 	}
-
-	public void setBarrios() {
-		
-	}*/
+	
 	
 	public Long getId() {
 		return id;
@@ -33,6 +40,13 @@ public class Comuna {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public List<Barrio> getBarrios() {
+		return barrios;
+	}
+	public void setBarrios(List<Barrio> barrios) {
+		this.barrios = barrios;
+	}
+	
 	
 	
 }
